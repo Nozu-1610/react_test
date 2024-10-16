@@ -10,16 +10,15 @@ const Form = () => {
     e.preventDefault();
 
     const newTodo = {
-      id: Math.floor(Math.random() * 1e5),
+      // id: Math.floor(Math.random() * 1e5), // json-server v0tov1対応 デフォルトで文字列のidが振られるため不要。
       content: enteredTodo,
-      editing: false
+      editing: false,
     };
 
-    todoApi.post(newTodo).then(newTodo => {
-      dispatch({ type: 'todo/add', todo: newTodo});
+    todoApi.post(newTodo).then((newTodo) => {
+      dispatch({ type: "todo/add", todo: newTodo });
       setEnteredTodo("");
-    })
-
+    });
   };
   return (
     <div>
